@@ -69,8 +69,24 @@ body {
     }
 }
 
+a.menuitem{
+  font-size:24px;
+  font-weight:normal;
+  margin:5px;
+  padding:0px;
+  text-align:center;
+}
+
+a.menuitem:active{
+  font-size:26px;
+}
+
+.menu {
+
+}
+
 h1 {
-    font-size:24px;
+    font-size:48px;
     font-weight:normal;
     margin:0px;
     overflow:visible;
