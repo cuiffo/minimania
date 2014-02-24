@@ -69,15 +69,18 @@ body {
 }
 
 a.menuitem{
-  font-size:24px;
+  font-size:4em;
   font-weight:normal;
+  color:#000000;
   margin:5px;
   padding:0px;
   text-align:center;
+  text-decoration:none;
 }
 
 a.menuitem:active{
   font-size:26px;
+  text-decoration:none;
 }
 
 .menu {
@@ -85,7 +88,7 @@ a.menuitem:active{
 }
 
 h1 {
-    font-size:48px;
+    font-size:7em;
     font-weight:normal;
     margin:0px;
     overflow:visible;
@@ -97,16 +100,22 @@ h1 {
   -webkit-animation: titlepulse 1s linear infinite;
 }
 
+.cornericon{
+  position: fixed;
+  bottom: 0;
+  right: 0;  
+}
+
 @-webkit-keyframes titlepulse{
-  0%    { font-size: 48px;}
-  12.5% { font-size: 49px;}
-  25%   { font-size: 50px;}
-  37.5% { font-size: 51px;}
-  50%   { font-size: 52px;}
-  62.5% { font-size: 51px;}
-  75%   { font-size: 50px;}
-  87.5% { font-size: 49px;}
-  100%  { font-size: 48px;}
+  0%    { font-size: 7em;}
+  12.5% { font-size: 7.1em;}
+  25%   { font-size: 7.2em;}
+  37.5% { font-size: 7.3em;}
+  50%   { font-size: 7.4em;}
+  62.5% { font-size: 7.3em;}
+  75%   { font-size: 7.2em;}
+  87.5% { font-size: 7.1em;}
+  100%  { font-size: 7em;}
 }
 
 .event {

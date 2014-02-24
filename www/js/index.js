@@ -27,14 +27,22 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        app.addEventListener("menubutton",this.onMenuButton, false);
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+        alert("HEY HEY");
         app.receivedEvent('deviceready');
     },
+    
+    onMenuButton: function() {
+      alert("HEY MENU!");
+      app.receivedEvent('menubutton');
+    },
+
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
