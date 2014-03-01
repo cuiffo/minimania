@@ -23,9 +23,9 @@
     //
     function startWatch() {
 
-        // Update acceleration every 3 seconds
-        var options = { frequency: 3000 };
-        
+        // Update acceleration every .1 seconds
+        var options = { frequency: 50 };
+
         watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
     }
 
@@ -40,12 +40,31 @@
 
     // onSuccess: Get a snapshot of the current acceleration
     //
+    
+    const SIZE = 5;
+    var xAvg = 0;
+    var yAvg = 0;
+    var xVals = [0, 0, 0, 0, 0];
+    var yVals = [0, 0, 0, 0, 0];
+
     function onSuccess(acceleration) {
-        var element = document.getElementById('accelerometer');
-        element.innerHTML = 'Acceleration X: ' + acceleration.x         + '<br />' +
-                            'Acceleration Y: ' + acceleration.y         + '<br />' +
-                            'Acceleration Z: ' + acceleration.z         + '<br />' +
-                            'Timestamp: '      + acceleration.timestamp + '<br />';
+      var nub = document.getElementById('nub');
+
+      runAverage(acceleration.x,acceleration.y);
+
+      nub.style.top = Math.min(Math.max((10*yAvg+45),0),90) + "%";
+      nub.style.right = Math.min(Math.max((10*xAvg+45),0),90) + "%";
+    }
+
+    function runAverage(newX, newY){
+
+      xAvg += newX/SIZE;
+      xAvg -= xVals.pop()/SIZE;
+      xVals.unshift(newX);
+      yAvg += newY/SIZE
+      yAvg -= yVals.pop()/SIZE;
+      yVals.unshift(newY);
+             
     }
 
     // onError: Failed to get the acceleration
@@ -57,6 +76,11 @@
     </script>
   </head>
   <body>
-    <div id="accelerometer">Waiting for accelerometer...</div>
+
+    <div id="slider" style="position:fixed; bottom:10%; left: 10%; background-color:#CC9999; width:80%; height:80%;">
+
+      <div id="nub" style="position:absolute; top:0; right:0; background-color:red; width:50px; height:50px; -webkit-border-radius:50%; -moz-border-radius:50%; border-radius:50%;"> </div>
+      
+    </div>
   </body>
 </html>
